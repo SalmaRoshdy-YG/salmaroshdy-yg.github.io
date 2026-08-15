@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salma Aly — AI/ML engineer & researcher</title>
+<meta name="description" content="Salma Aly builds machine learning systems end to end — LLM fine-tuning and evaluation, reinforcement learning agents, and production ML that runs at scale.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..700&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:opsz,wght@6..72,300..600&display=swap" rel="stylesheet">
+
+<style>
+/* ─────────────────────────────────────────────
+   TOKENS
+   ───────────────────────────────────────────── */
+:root{
+  --ground:      #5A686F;
+  --recess:      #4B575E;
+  --raise:       #667479;
+  --ink:         #F4F6F5;
+  --ink-mid:     #D2DADA;
+  --ink-soft:    #B3BFC1;
+  --rule:        rgba(244,246,245,.16);
+  --rule-strong: rgba(244,246,245,.32);
+  --brass:       #E9B04A;
+  --mint:        #86D9C0;
+
+  --display: "Archivo", system-ui, sans-serif;
+  --body:    "Newsreader", Georgia, serif;
+  --mono:    "JetBrains Mono", ui-monospace, monospace;
+
+  --pad: clamp(20px, 5vw, 72px);
+  --maxw: 1180px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:clamp(16.5px, 1.05vw, 18px);
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.wrap{ width:100%; max-width:var(--maxw); margin:0 auto; padding-inline:var(--pad); position:relative; z-index:1; }
+a{ color:inherit; }
+
+h1,h2,h3,h4{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 116;
+  font-weight:600; letter-spacing:-.015em; line-height:1.08; margin:0;
+}
+.mono{ font-family:var(--mono); }
+.eyebrow{
+  font-family:var(--mono); font-size:.7rem; font-weight:500;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft);
+}
+:focus-visible{ outline:2px solid var(--brass); outline-offset:3px; border-radius:2px; }
+
+/* ─────────────────────────────────────────────
+   NAV
+   ───────────────────────────────────────────── */
+.nav{
+  position:sticky; top:0; z-index:50;
+  background:rgba(90,104,111,.82);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--rule);
+}
+.nav-in{ display:flex; align-items:center; justify-content:space-between; gap:24px; height:60px; }
+.nav-name{
+  font-family:var(--display); font-variation-settings:"wdth" 110;
+  font-weight:700; font-size:.95rem; text-decoration:none; white-space:nowrap;
+}
+.nav-name span{ color:var(--brass); }
+.nav-links{ display:flex; gap:22px; }
+.nav-links a{
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--ink-mid); text-decoration:none; padding-bottom:2px;
+  border-bottom:1px solid transparent; transition:color .2s, border-color .2s;
+}
+.nav-links a:hover{ color:var(--ink); border-color:var(--brass); }
+@media (max-width:920px){ .nav-links{ display:none; } }
+
+/* ─────────────────────────────────────────────
+   HERO
+   ───────────────────────────────────────────── */
+.hero{ padding-block: clamp(56px, 9vw, 104px) clamp(48px, 7vw, 88px); }
+.hero-grid{
+  display:grid; grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);
+  gap:clamp(32px, 5vw, 64px); align-items:start;
+}
+@media (max-width:940px){ .hero-grid{ grid-template-columns:1fr; } }
+
+.hero-role{ display:flex; align-items:center; gap:12px; margin-bottom:26px; }
+.hero-role .dot{
+  width:7px; height:7px; border-radius:50%; background:var(--mint); flex:none;
+  box-shadow:0 0 0 4px rgba(134,217,192,.18);
+}
+h1{
+  font-size:clamp(2.4rem, 6vw, 4.3rem);
+  font-variation-settings:"wdth" 112; font-weight:700; letter-spacing:-.03em;
+}
+h1 em{
+  font-family:var(--body); font-style:italic; font-weight:400;
+  color:var(--brass); letter-spacing:-.005em;
+}
+.hero-lede{ margin:28px 0 0; font-size:1.16rem; color:var(--ink-mid); max-width:48ch; }
+.hero-lede strong{ color:var(--ink); font-weight:600; }
+
+.hero-meta{
+  margin-top:34px; padding-top:22px; border-top:1px solid var(--rule);
+  display:flex; flex-wrap:wrap; gap:10px 26px; align-items:center;
+}
+.hero-meta a, .hero-meta span{
+  font-family:var(--mono); font-size:.78rem; color:var(--ink-mid); text-decoration:none;
+}
+.hero-meta a{ border-bottom:1px solid var(--rule-strong); padding-bottom:2px; transition:color .2s, border-color .2s; }
+.hero-meta a:hover{ color:var(--brass); border-color:var(--brass); }
+
+/* ── signature: the capability switcher ── */
+.panel{
+  background:var(--recess); border:1px solid var(--rule); border-radius:4px;
+  box-shadow:0 22px 48px -28px rgba(20,28,32,.75);
+  overflow:hidden; font-family:var(--mono);
+}
+.panel-bar{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:11px 16px; border-bottom:1px solid var(--rule); background:rgba(0,0,0,.09);
+}
+.panel-bar .t{ letter-spacing:.11em; text-transform:uppercase; font-size:.66rem; color:var(--ink-soft); }
+.panel-bar .s{ font-size:.66rem; color:var(--mint); letter-spacing:.08em; }
+
+.tabs{ display:flex; border-bottom:1px solid var(--rule); overflow-x:auto; scrollbar-width:none; }
+.tabs::-webkit-scrollbar{ display:none; }
+.tabs button{
+  appearance:none; background:none; cursor:pointer; white-space:nowrap;
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--ink-soft); padding:13px 15px; border:none;
+  border-bottom:2px solid transparent; transition:color .2s, border-color .2s;
+}
+.tabs button:hover{ color:var(--ink); }
+.tabs button[aria-selected="true"]{ color:var(--ink); border-bottom-color:var(--brass); }
+
+.pane{ padding:20px 16px 18px; display:none; }
+.pane[data-open="true"]{ display:block; animation:fade .3s ease; }
+@keyframes fade{ from{ opacity:0; transform:translateY(5px); } to{ opacity:1; transform:none; } }
+.pane .line{
+  font-family:var(--body); font-size:.98rem; line-height:1.55;
+  color:var(--ink-mid); margin:0 0 16px;
+}
+.prow{
+  display:flex; align-items:baseline; justify-content:space-between; gap:16px;
+  padding:9px 0; border-top:1px dotted var(--rule); font-size:.73rem;
+}
+.prow .k{ color:var(--ink-soft); letter-spacing:.04em; flex:none; }
+.prow .v{ color:var(--mint); text-align:right; }
+.prow .v.b{ color:var(--brass); }
+.panel-foot{
+  padding:10px 16px; border-top:1px solid var(--rule); background:rgba(0,0,0,.09);
+  font-size:.66rem; color:var(--ink-soft); letter-spacing:.04em;
+}
+
+/* ─────────────────────────────────────────────
+   SECTION SHELL
+   ───────────────────────────────────────────── */
+section{ padding-block:clamp(48px, 7vw, 86px); position:relative; z-index:1; }
+.band{ background:var(--recess); border-block:1px solid var(--rule); }
+.sec-head{ display:flex; align-items:center; gap:16px; margin-bottom:clamp(28px, 4vw, 44px); }
+.sec-head h2{ font-size:clamp(1.35rem, 2.4vw, 1.9rem); font-variation-settings:"wdth" 110; white-space:nowrap; }
+.sec-head .n{ font-family:var(--mono); font-size:.72rem; color:var(--brass); letter-spacing:.1em; }
+.sec-head .line{ flex:1; height:1px; background:var(--rule); }
+@media (max-width:560px){ .sec-head .eyebrow{ display:none; } }
+
+/* ─────────────────────────────────────────────
+   AREAS
+   ───────────────────────────────────────────── */
+.areas{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(18px,2.6vw,32px); }
+@media (max-width:960px){ .areas{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:560px){ .areas{ grid-template-columns:1fr; } }
+.areas > div{ border-top:2px solid var(--brass); padding-top:16px; }
+.areas h3{ font-size:1.02rem; margin-bottom:8px; font-variation-settings:"wdth" 106; }
+.areas p{ margin:0; color:var(--ink-mid); font-size:.95rem; }
+
+/* ─────────────────────────────────────────────
+   PROJECTS
+   ───────────────────────────────────────────── */
+.projects{ display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(18px,2.4vw,26px); }
+@media (max-width:860px){ .projects{ grid-template-columns:1fr; } }
+.card{
+  background:var(--raise); border:1px solid var(--rule); border-radius:4px;
+  padding:26px 24px 22px; display:flex; flex-direction:column;
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.card:hover{ transform:translateY(-3px); border-color:var(--rule-strong); box-shadow:0 20px 40px -26px rgba(20,28,32,.7); }
+.card-top{ display:flex; align-items:baseline; justify-content:space-between; gap:14px; margin-bottom:12px; }
+.card h3{ font-size:1.2rem; font-variation-settings:"wdth" 108; }
+.card .kind{
+  font-family:var(--mono); font-size:.62rem; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--ink-soft); white-space:nowrap;
+}
+.card p{ margin:0 0 18px; color:var(--ink-mid); font-size:.95rem; }
+.metrics{ margin-top:auto; border-top:1px solid var(--rule); }
+.metric{
+  display:flex; align-items:baseline; justify-content:space-between; gap:14px;
+  padding:8px 0; border-bottom:1px dotted var(--rule);
+  font-family:var(--mono); font-size:.72rem;
+}
+.metric:last-child{ border-bottom:none; }
+.metric .k{ color:var(--ink-soft); letter-spacing:.04em; flex:none; }
+.metric .val{ color:var(--mint); font-weight:500; text-align:right; }
+.metric .val.b{ color:var(--brass); }
+.card-links{ display:flex; flex-wrap:wrap; gap:16px; margin-top:16px; }
+.card-links a{
+  font-family:var(--mono); font-size:.71rem; letter-spacing:.05em; text-decoration:none;
+  color:var(--ink); border-bottom:1px solid var(--brass); padding-bottom:2px; transition:color .2s;
+}
+.card-links a:hover{ color:var(--brass); }
+
+/* ─────────────────────────────────────────────
+   PUBLICATIONS
+   ───────────────────────────────────────────── */
+.pub{
+  display:grid; grid-template-columns:128px 1fr; gap:clamp(16px,3vw,34px);
+  padding:22px 0; border-top:1px solid var(--rule);
+}
+.pub:last-child{ border-bottom:1px solid var(--rule); }
+@media (max-width:720px){ .pub{ grid-template-columns:1fr; gap:10px; } }
+.pub-venue{ font-family:var(--mono); font-size:.74rem; line-height:1.5; }
+.pub-venue .v{ display:block; color:var(--ink); font-weight:500; letter-spacing:.04em; }
+.pub-venue .y{ display:block; color:var(--ink-soft); }
+.pub h3{ font-size:1.06rem; font-variation-settings:"wdth" 104; line-height:1.3; }
+.pub p{ margin:7px 0 0; color:var(--ink-mid); font-size:.94rem; }
+.pub-foot{ margin-top:11px; display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; }
+.status{
+  font-family:var(--mono); font-size:.63rem; letter-spacing:.12em; text-transform:uppercase;
+  padding:3px 9px; border-radius:2px; border:1px solid var(--rule-strong); color:var(--ink-soft);
+}
+.status.live{ color:var(--mint); border-color:rgba(134,217,192,.45); }
+.status.review{ color:var(--brass); border-color:rgba(233,176,74,.45); }
+.byline{ font-family:var(--mono); font-size:.7rem; color:var(--ink-soft); }
+.pub-foot a{
+  font-family:var(--mono); font-size:.71rem; color:var(--ink-mid); text-decoration:none;
+  border-bottom:1px solid var(--rule-strong); padding-bottom:1px; transition:color .2s, border-color .2s;
+}
+.pub-foot a:hover{ color:var(--brass); border-color:var(--brass); }
+
+/* ─────────────────────────────────────────────
+   READING LIST
+   ───────────────────────────────────────────── */
+.reads-note{ color:var(--ink-mid); max-width:56ch; margin:-14px 0 26px; font-size:.99rem; }
+.read{
+  display:grid; grid-template-columns:112px 1fr; gap:clamp(14px,3vw,32px);
+  padding:18px 0; border-top:1px solid var(--rule);
+}
+.read:last-child{ border-bottom:1px solid var(--rule); }
+@media (max-width:720px){ .read{ grid-template-columns:1fr; gap:8px; } }
+.read-src{ font-family:var(--mono); font-size:.72rem; line-height:1.5; }
+.read-src .v{ display:block; color:var(--ink); font-weight:500; letter-spacing:.04em; }
+.read-src .y{ display:block; color:var(--ink-soft); }
+.read h3{ font-size:1.02rem; font-variation-settings:"wdth" 104; line-height:1.32; }
+.read h3 a{
+  text-decoration:none; border-bottom:1px solid var(--rule-strong);
+  padding-bottom:2px; transition:color .2s, border-color .2s;
+}
+.read h3 a:hover{ color:var(--brass); border-color:var(--brass); }
+.read p{ margin:7px 0 0; color:var(--ink-mid); font-size:.93rem; }
+.read .who{ font-family:var(--mono); font-size:.69rem; color:var(--ink-soft); display:block; margin-top:7px; }
+
+/* ─────────────────────────────────────────────
+   TIMELINE
+   ───────────────────────────────────────────── */
+.tl{ position:relative; padding-left:26px; }
+.tl::before{ content:""; position:absolute; left:5px; top:8px; bottom:8px; width:1px; background:var(--rule); }
+.job{ position:relative; padding-bottom:36px; }
+.job:last-child{ padding-bottom:0; }
+.job::before{
+  content:""; position:absolute; left:-25px; top:9px; width:11px; height:11px;
+  border-radius:50%; background:var(--ground); border:2px solid var(--ink-soft);
+}
+.job.now::before{ border-color:var(--mint); background:var(--mint); box-shadow:0 0 0 4px rgba(134,217,192,.18); }
+.job-head{ display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:6px 20px; }
+.job h3{ font-size:1.08rem; font-variation-settings:"wdth" 106; }
+.job .org{ color:var(--brass); font-weight:400; font-family:var(--body); font-style:italic; }
+.job .when{ font-family:var(--mono); font-size:.71rem; color:var(--ink-soft); white-space:nowrap; }
+.job ul{ margin:11px 0 0; padding-left:17px; }
+.job li{ margin-bottom:6px; color:var(--ink-mid); font-size:.96rem; }
+.job li::marker{ color:var(--ink-soft); }
+
+/* ─────────────────────────────────────────────
+   SKILLS + EDUCATION
+   ───────────────────────────────────────────── */
+.two{ display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:clamp(28px,5vw,60px); }
+@media (max-width:860px){ .two{ grid-template-columns:1fr; } }
+.skillset{ margin-bottom:24px; }
+.skillset:last-child{ margin-bottom:0; }
+.skillset h4{
+  font-family:var(--mono); font-size:.67rem; font-weight:500; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--brass); margin-bottom:10px;
+}
+.tags{ display:flex; flex-wrap:wrap; gap:7px; }
+.tags span{
+  font-family:var(--mono); font-size:.73rem; padding:5px 11px; border-radius:2px;
+  background:rgba(0,0,0,.13); border:1px solid var(--rule); color:var(--ink-mid);
+}
+.edu{ padding:15px 0; border-top:1px solid var(--rule); }
+.edu:last-of-type{ border-bottom:1px solid var(--rule); }
+.edu h4{ font-family:var(--display); font-variation-settings:"wdth" 106; font-size:.99rem; font-weight:600; margin:0 0 3px; }
+.edu .school{ color:var(--ink-mid); font-size:.94rem; }
+.edu .when{ font-family:var(--mono); font-size:.7rem; color:var(--ink-soft); display:block; margin-top:4px; }
+
+/* ─────────────────────────────────────────────
+   CONTACT
+   ───────────────────────────────────────────── */
+.contact h2{
+  font-size:clamp(1.9rem, 4.4vw, 3rem); font-variation-settings:"wdth" 112;
+  font-weight:700; letter-spacing:-.025em; max-width:22ch;
+}
+.contact p{ color:var(--ink-mid); max-width:54ch; margin:20px 0 30px; }
+.contact-links{ display:flex; flex-wrap:wrap; gap:12px; }
+.btn{
+  font-family:var(--mono); font-size:.78rem; letter-spacing:.05em; text-decoration:none;
+  padding:12px 20px; border-radius:3px; border:1px solid var(--rule-strong); color:var(--ink);
+  transition:background .2s, color .2s, border-color .2s;
+}
+.btn:hover{ border-color:var(--brass); color:var(--brass); }
+.btn.solid{ background:var(--brass); color:#3A3021; border-color:var(--brass); font-weight:500; }
+.btn.solid:hover{ background:#F3C067; color:#3A3021; border-color:#F3C067; }
+
+footer{
+  border-top:1px solid var(--rule); padding-block:26px;
+  display:flex; flex-wrap:wrap; gap:10px 24px; justify-content:space-between;
+  font-family:var(--mono); font-size:.7rem; color:var(--ink-soft);
+}
+
+/* ─────────────────────────────────────────────
+   REVEAL
+   ───────────────────────────────────────────── */
+.rv{ opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s cubic-bezier(.22,.9,.3,1); }
+.rv.in{ opacity:1; transform:none; }
+@media (prefers-reduced-motion: reduce){
+  .rv{ opacity:1; transform:none; transition:none; }
+  .pane[data-open="true"]{ animation:none; }
+  .card:hover{ transform:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="nav-name" href="#top">Salma Aly<span>.</span></a>
+    <div class="nav-links">
+      <a href="#work">Projects</a>
+      <a href="#research">Research</a>
+      <a href="#reading">Reading</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-role">
+        <span class="dot"></span>
+        <span class="eyebrow">AI/ML engineer &amp; researcher · Seeking Summer 2027 internships</span>
+      </div>
+
+      <h1>I build AI systems —<br>then <em>prove</em> they work.</h1>
+
+      <p class="hero-lede">
+        CS PhD researcher at the University of Windsor with three years of industry engineering behind
+        it. I work across <strong>LLM fine-tuning, reinforcement learning agents, evaluation, and
+        production ML</strong> — and I've shipped models that run on 80,000+ requests a day.
+      </p>
+
+      <div class="hero-meta">
+        <a href="mailto:ali9o@uwindsor.ca">ali9o@uwindsor.ca</a>
+        <a href="https://github.com/SalmaRoshdy-YG" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://scholar.google.ca/citations?user=eEISqbYAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://www.linkedin.com/in/salma-aly-92bb09174" target="_blank" rel="noopener">LinkedIn</a>
+        <span>Windsor, ON · Canada</span>
+      </div>
+    </div>
+
+    <!-- signature element: breadth, one domain at a time -->
+    <div class="panel">
+      <div class="panel-bar">
+        <span class="t">Where I work</span>
+        <span class="s">● 4 domains</span>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Areas of work">
+        <button role="tab" id="t-llm"  aria-controls="p-llm"  aria-selected="true">LLMs</button>
+        <button role="tab" id="t-rl"   aria-controls="p-rl"   aria-selected="false">RL &amp; agents</button>
+        <button role="tab" id="t-prod" aria-controls="p-prod" aria-selected="false">Production</button>
+        <button role="tab" id="t-data" aria-controls="p-data" aria-selected="false">Data &amp; automation</button>
+      </div>
+
+      <div class="pane" id="p-llm" role="tabpanel" aria-labelledby="t-llm" data-open="true">
+        <p class="line">Fine-tuning foundation models for specialised tasks, and building the
+           evaluation machinery that tells you whether the output is actually right.</p>
+        <div class="prow"><span class="k">frameworks</span><span class="v">PyTorch · TensorFlow · HF Transformers</span></div>
+        <div class="prow"><span class="k">evaluation</span><span class="v">reference-free correctness, judge models</span></div>
+        <div class="prow"><span class="k">contribution</span><span class="v b">Alignment Score metric</span></div>
+      </div>
+
+      <div class="pane" id="p-rl" role="tabpanel" aria-labelledby="t-rl">
+        <p class="line">Multi-agent reinforcement learning for automated fault discovery, with reward
+           functions designed to push agents into unexplored territory.</p>
+        <div class="prow"><span class="k">algorithms</span><span class="v">PPO · ICM · LLM-guided policies</span></div>
+        <div class="prow"><span class="k">faults found</span><span class="v">+29% over baseline</span></div>
+        <div class="prow"><span class="k">exploration</span><span class="v b">+128% request diversity</span></div>
+      </div>
+
+      <div class="pane" id="p-prod" role="tabpanel" aria-labelledby="t-prod">
+        <p class="line">Taking a model from notebook to live traffic — deployment, latency budgets,
+           monitoring, and the client conversation that goes with it.</p>
+        <div class="prow"><span class="k">latency</span><span class="v">10s → &lt;1s per request</span></div>
+        <div class="prow"><span class="k">throughput</span><span class="v">80,000+ / day</span></div>
+        <div class="prow"><span class="k">ownership</span><span class="v b">design → deploy → evaluate</span></div>
+      </div>
+
+      <div class="pane" id="p-data" role="tabpanel" aria-labelledby="t-data">
+        <p class="line">The unglamorous half: pipelines, cleaning, integration, CI/CD, and dashboards
+           that people actually make decisions with.</p>
+        <div class="prow"><span class="k">stack</span><span class="v">Python · SQL · Pandas · Tableau · Power BI</span></div>
+        <div class="prow"><span class="k">automation</span><span class="v">RPA + API workflows, CI/CD</span></div>
+        <div class="prow"><span class="k">impact</span><span class="v b">+30% reach · −10% manual effort</span></div>
+      </div>
+
+      <div class="panel-foot">Every number here comes from a shipped project or a published result.</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ AREAS ══════════ -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="n">01</span><h2>How I work</h2><span class="line"></span>
+    </div>
+
+    <div class="areas rv">
+      <div>
+        <h3>Research to product</h3>
+        <p>I've done both sides — publishing at ICSE and TOSEM, and shipping a fine-tuned LLM into a
+           live logistics pipeline. Neither is a detour from the other.</p>
+      </div>
+      <div>
+        <h3>Measurement first</h3>
+        <p>My research is about how you tell whether an AI system is correct. That habit follows me
+           into every project: define the metric before the model.</p>
+      </div>
+      <div>
+        <h3>Full ownership</h3>
+        <p>Model design, training, deployment, evaluation, and the client conversation. I've run
+           projects end to end and led junior engineers through them.</p>
+      </div>
+      <div>
+        <h3>Teaching as testing</h3>
+        <p>I run LLM and prompt engineering workshops for Master's students. Explaining a method to
+           someone new is the fastest way to find where it breaks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PROJECTS ══════════ -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="n">02</span><h2>Projects</h2><span class="line"></span>
+      <span class="eyebrow">Measured results</span>
+    </div>
+
+    <div class="projects rv">
+
+      <article class="card">
+        <div class="card-top">
+          <h3>Parcel Verification at Scale</h3>
+          <span class="kind">Production LLM</span>
+        </div>
+        <p>Replaced regex and Google Maps matching with a fine-tuned LLM that resolves ambiguous and
+           incomplete delivery addresses. Owned it end to end: model design, deployment, client
+           handover, evaluation.</p>
+        <div class="metrics">
+          <div class="metric"><span class="k">latency</span><span class="val">10s → &lt;1s / parcel</span></div>
+          <div class="metric"><span class="k">throughput</span><span class="val">80,000+ / day</span></div>
+          <div class="metric"><span class="k">improvement</span><span class="val b">75%+</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <h3>PARL</h3>
+          <span class="kind">Multi-agent RL</span>
+        </div>
+        <p>An LLM-driven multi-agent reinforcement learning tool for automated API fault discovery.
+           Diversified reward functions push agents toward unexplored request space instead of
+           re-testing what already passes.</p>
+        <div class="metrics">
+          <div class="metric"><span class="k">faults_detected</span><span class="val">+29% vs baseline</span></div>
+          <div class="metric"><span class="k">request_diversity</span><span class="val">+128%</span></div>
+          <div class="metric"><span class="k">stack</span><span class="val b">PPO · ICM · prompt-tuned agents</span></div>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/SalmaRoshdy-YG/PARL" target="_blank" rel="noopener">Code ↗</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <h3>ICT-Eval</h3>
+          <span class="kind">Model evaluation</span>
+        </div>
+        <p>Predicts whether generated code is correct without reference tests or execution — at a
+           fraction of the cost of running an LLM as a judge. Scores deterministically by combining
+           LSTM and GNN embeddings with transformer architectures, and introduces the
+           <em>Alignment Score</em>, a metric that classifies generated code against data labels.</p>
+        <div class="metrics">
+          <div class="metric"><span class="k">approach</span><span class="val">reference-free, no execution</span></div>
+          <div class="metric"><span class="k">models</span><span class="val">LSTM · GNN · Transformers</span></div>
+          <div class="metric"><span class="k">contribution</span><span class="val b">Alignment Score metric</span></div>
+          <div class="metric"><span class="k">venue</span><span class="val">ICSE 2027 · under review</span></div>
+        </div>
+        <div class="card-links">
+          <span class="status review">Code released after review</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <h3>Thoth</h3>
+          <span class="kind">IoT systems testing</span>
+        </div>
+        <p>End-to-end testing framework for consumer IoT, validated on real health-monitoring
+           deployments. Measures recovery and cascading failure behaviour, not just whether a device
+           responds.</p>
+        <div class="metrics">
+          <div class="metric"><span class="k">fault_detection</span><span class="val">2.5s</span></div>
+          <div class="metric"><span class="k">recovery_time</span><span class="val">&lt; 1s</span></div>
+          <div class="metric"><span class="k">energy_overhead</span><span class="val">&lt; 1%</span></div>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/SalmaRoshdy-YG/E2E-IoT-Testing-Framework" target="_blank" rel="noopener">Code ↗</a>
+          <a href="https://www.scitepress.org/Link.aspx?doi=10.5220/0013650200003964" target="_blank" rel="noopener">Paper ↗</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <h3>Automation Pipelines</h3>
+          <span class="kind">Data engineering</span>
+        </div>
+        <p>Scalable pipelines at Robiquity integrating RPA tools, Python services, and cloud
+           infrastructure to move data between business systems — with junior engineers to bring
+           along on the way.</p>
+        <div class="metrics">
+          <div class="metric"><span class="k">manual_effort</span><span class="val">−10% in AR processing</span></div>
+          <div class="metric"><span class="k">reliability</span><span class="val">error rates down, fewer interventions</span></div>
+          <div class="metric"><span class="k">role</span><span class="val b">tech lead + mentor</span></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RESEARCH ══════════ -->
+<section id="research" class="band">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="n">03</span><h2>Research</h2><span class="line"></span>
+      <span class="eyebrow">05 papers</span>
+    </div>
+
+    <div class="rv">
+      <article class="pub">
+        <div class="pub-venue"><span class="v">TMLR</span><span class="y">In preparation</span></div>
+        <div>
+          <h3>When Is a Multi-Agent Code Judge Actually Grounded? Identifying What Its Evidence Must Satisfy, and How to Measure It</h3>
+          <p>Sets out the conditions a multi-agent judge's evidence has to meet before its verdict
+             counts as grounded — and proposes measures for checking whether it does.</p>
+          <div class="pub-foot">
+            <span class="status">In preparation</span>
+            <span class="byline">Aly, S. R., Kobti, Z.</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="pub-venue"><span class="v">ICSE</span><span class="y">2027</span></div>
+        <div>
+          <h3>ICT-Eval: Cost-Effective Reference-Free Correctness Prediction for LLM-Generated Code</h3>
+          <p>Predicts whether generated code is correct without reference tests or execution, at a
+             fraction of the cost of LLM-as-judge pipelines.</p>
+          <div class="pub-foot">
+            <span class="status review">Under review</span>
+            <span class="byline">Aly, S. R., Kobti, Z.</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="pub-venue"><span class="v">TOSEM</span><span class="y">2026</span></div>
+        <div>
+          <h3>Correct, According to What? A Systematic Mapping of Evaluation Frameworks, Benchmarks, and Metrics for LLM-Generated Code</h3>
+          <p>Maps what the field's evaluation infrastructure actually measures, where benchmarks
+             disagree, and which correctness claims the metrics can support.</p>
+          <div class="pub-foot">
+            <span class="status review">Under review</span>
+            <a href="https://doi.org/10.5281/zenodo.20618538" target="_blank" rel="noopener">Paper &amp; replication package ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="pub-venue"><span class="v">ICSOFT</span><span class="y">2025</span></div>
+        <div>
+          <h3>Thoth: A Lightweight Framework for End-to-End Consumer IoT Rapid Testing</h3>
+          <p>The first metrics-driven framework for evaluating performance, reliability, recovery,
+             security, and cascading failures across a whole consumer IoT setup.</p>
+          <div class="pub-foot">
+            <span class="status live">Published</span>
+            <span class="byline">Aly, S. R., Saad, S., Mamun, M.</span>
+            <a href="https://www.scitepress.org/Link.aspx?doi=10.5220/0013650200003964" target="_blank" rel="noopener">Paper ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="pub-venue"><span class="v">MSc thesis</span><span class="y">2022</span></div>
+        <div>
+          <h3>A Component-Based Analysis for Online Proctoring</h3>
+          <p>The American University in Cairo — decomposing proctoring systems into components and
+             analysing each one's failure surface.</p>
+          <div class="pub-foot">
+            <span class="status live">Published</span>
+            <a href="https://fount.aucegypt.edu/etds/1928" target="_blank" rel="noopener">AUC Knowledge Fountain ↗</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ READING ══════════ -->
+<section id="reading">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="n">04</span><h2>Recent reads</h2><span class="line"></span>
+      <span class="eyebrow">Updated as I go</span>
+    </div>
+
+    <div class="rv">
+      <p class="reads-note">Papers I've read recently and keep coming back to — mostly on judging,
+         critiquing, and reasoning about model output.</p>
+
+      <article class="read">
+        <div class="read-src"><span class="v">ACL</span><span class="y">2026</span></div>
+        <div>
+          <h3><a href="https://aclanthology.org/2026.acl-long.1828/" target="_blank" rel="noopener">MARCH: Multi-Agent Reinforced Check for Hallucination ↗</a></h3>
+          <p>Splits hallucination checking across a Solver, a Proposer, and a Checker, then withholds the
+             original answer from the Checker so it can't rubber-stamp its own reasoning. Deliberate
+             information asymmetry as a fix for confirmation bias in LLM judges.</p>
+          <span class="who">Li et al.</span>
+        </div>
+      </article>
+
+      <article class="read">
+        <div class="read-src"><span class="v">OpenReview</span><span class="y">Preprint</span></div>
+        <div>
+          <h3><a href="https://openreview.net/forum?id=tsuxIeLUsz" target="_blank" rel="noopener">Critique-Coder: Enhancing Coder Models by Critique Reinforcement Learning ↗</a></h3>
+          <p>Trains a coder model to critique rather than only to answer, rewarding it when its
+             judgment of a solution matches the ground-truth label. Swapping a fifth of the RL data
+             for critique data beats RL-only baselines — and the gains carry over to general reasoning.</p>
+          <span class="who">Ruan, Jiang, Wang, Chen</span>
+        </div>
+      </article>
+
+      <article class="read">
+        <div class="read-src"><span class="v">arXiv</span><span class="y">2026</span></div>
+        <div>
+          <h3><a href="https://arxiv.org/abs/2603.01896" target="_blank" rel="noopener">Agentic Code Reasoning ↗</a></h3>
+          <p>Asks whether agents can reason about code semantics without running it. Structured
+             "semi-formal" prompting forces explicit premises and traced execution paths, acting as a
+             certificate the agent can't skip steps in — with clear gains on patch equivalence and
+             fault localisation.</p>
+        </div>
+      </article>
+
+      <article class="read">
+        <div class="read-src"><span class="v">OpenReview</span><span class="y">Preprint</span></div>
+        <div>
+          <h3><a href="https://openreview.net/forum?id=IF0L7HSs3K" target="_blank" rel="noopener">Meta-Evaluation Collapse: Who Judges the Judges of Judges? ↗</a></h3>
+          <p>Argues that stacking LLM evaluators on LLM evaluators converges on internally consistent
+             but ungrounded verdicts. Judges agree with each other while drifting away from human
+             raters — which is the whole problem my own work is circling.</p>
+        </div>
+      </article>
+
+      <article class="read">
+        <div class="read-src"><span class="v">TMLR</span><span class="y">2026</span></div>
+        <div>
+          <h3><a href="https://openreview.net/forum?id=4y6jiE6Q60" target="_blank" rel="noopener">Can VLMs Reason Robustly? A Neuro-Symbolic Investigation ↗</a></h3>
+          <p>Fine-tuned VLMs score well in-distribution and fall apart under covariate shift, suggesting
+             training doesn't actually install the reasoning rule. The fix compiles the rules into a
+             symbolic circuit and leaves the model to do perception.</p>
+          <span class="who">Chen, Vergari, Zhao</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ EXPERIENCE ══════════ -->
+<section id="experience" class="band">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="n">05</span><h2>Experience</h2><span class="line"></span>
+    </div>
+
+    <div class="tl rv">
+
+      <article class="job now">
+        <div class="job-head">
+          <h3>Research Assistant — <span class="org">University of Windsor</span></h3>
+          <span class="when">Sep 2023 — Present</span>
+        </div>
+        <ul>
+          <li>Built a deterministic evaluation framework for LLM code responses using LSTM and GNN embeddings with transformer architectures.</li>
+          <li>Introduced the Alignment Score, a new metric that classifies generated code via data labels.</li>
+          <li>Designed PARL, an LLM-based multi-agent RL tool for automated API fault discovery — 29% more faults and 128% more diverse requests than baseline.</li>
+          <li>Designed and validated Thoth on real health-monitoring setups: 2.5s fault detection, sub-second recovery, under 1% energy overhead.</li>
+        </ul>
+      </article>
+
+      <article class="job now">
+        <div class="job-head">
+          <h3>Research Project Mentor — <span class="org">University of Windsor</span></h3>
+          <span class="when">May 2024 — Present</span>
+        </div>
+        <ul>
+          <li>Ran hands-on workshops on LLMs, prompt engineering, and software engineering practice for Master's students.</li>
+          <li>Led interactive sessions on prompt engineering, fine-tuning, and SE workflows, taking students from theory to working implementations.</li>
+          <li>Mentored graduate researchers through experimental design and evaluation of AI-driven software systems.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <h3>AI Consultant, R&amp;D — <span class="org">BlinkTech Solutions Inc.</span></h3>
+          <span class="when">Sep 2024 — Mar 2025</span>
+        </div>
+        <ul>
+          <li>Owned the full project lifecycle: model design, development, deployment, client collaboration, and performance evaluation.</li>
+          <li>Automated verification of unresolved parcels with LLMs, handling the ambiguous and incomplete addresses that regex and Maps matching couldn't.</li>
+          <li>Cut verification from 10s to under 1s per parcel — a 75%+ improvement enabling real-time processing of 80,000+ parcels daily.</li>
+          <li>Fine-tuned foundational LLMs in PyTorch and TensorFlow for specialised logistics use cases.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <h3>Intelligent Automation Engineer — <span class="org">Robiquity</span></h3>
+          <span class="when">Jun 2022 — Jul 2023 · Cairo</span>
+        </div>
+        <ul>
+          <li>Built scalable automation pipelines integrating RPA tools, Python, and cloud services across business systems.</li>
+          <li>Led and mentored junior engineers on collaboration, code quality, and delivery.</li>
+          <li>Reduced error rates and manual intervention through end-to-end process automation, cutting manual effort in accounts receivable by 10%.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <h3>Data Analyst — <span class="org">The American University in Cairo</span></h3>
+          <span class="when">Jan 2022 — May 2022 · Cairo</span>
+        </div>
+        <ul>
+          <li>Collected, cleaned, and analysed social media datasets with Python (Pandas, NumPy) and SQL to optimise posting schedules and media mix.</li>
+          <li>Built dashboards in Excel, Tableau, and Power BI that grew audience reach by 30%.</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SKILLS + EDUCATION ══════════ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="n">06</span><h2>Toolkit</h2><span class="line"></span>
+    </div>
+
+    <div class="two rv">
+      <div>
+        <div class="skillset">
+          <h4>Machine learning &amp; AI</h4>
+          <div class="tags">
+            <span>LLM fine-tuning</span><span>Model evaluation</span><span>Agentic AI</span>
+            <span>Prompt engineering</span><span>PyTorch</span><span>TensorFlow</span>
+            <span>Hugging Face Transformers</span><span>Scikit-learn</span>
+            <span>Reinforcement learning (PPO, ICM)</span><span>Generative AI</span>
+            <span>LSTM · GNN · Transformers</span>
+          </div>
+        </div>
+
+        <div class="skillset">
+          <h4>Programming &amp; data</h4>
+          <div class="tags">
+            <span>Python</span><span>Java</span><span>SQL</span><span>C++</span><span>Bash</span>
+            <span>Pandas</span><span>NumPy</span><span>Tableau</span><span>Power BI</span>
+          </div>
+        </div>
+
+        <div class="skillset">
+          <h4>Engineering &amp; infrastructure</h4>
+          <div class="tags">
+            <span>Git / GitHub</span><span>CI/CD pipelines</span><span>AWS</span><span>GCP</span>
+            <span>API workflows</span><span>Intelligent automation (RPA)</span>
+            <span>JUnit</span><span>JaCoCo</span>
+            <span>Unit · integration · API · security testing</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="eyebrow" style="display:block;margin-bottom:14px">Education</div>
+
+        <div class="edu">
+          <h4>PhD, Computer Science</h4>
+          <div class="school">University of Windsor</div>
+          <span class="when">Sep 2023 — Present · Windsor, ON</span>
+        </div>
+
+        <div class="edu">
+          <h4>MSc, Computer Science</h4>
+          <div class="school">The American University in Cairo</div>
+          <span class="when">Completed Jun 2022</span>
+        </div>
+
+        <div class="edu">
+          <h4>BSc, Computer Science</h4>
+          <div class="school">Future University in Egypt · GPA 4.0</div>
+          <span class="when">Completed Aug 2018</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section id="contact" class="band">
+  <div class="wrap rv contact">
+    <span class="eyebrow">Open to AI/ML internships</span>
+    <h2 style="margin-top:18px">Looking for a team building something hard.</h2>
+    <p>I'm after applied research and ML engineering internships — LLMs, agents, evaluation,
+       or production systems. I'm equally happy training a model and shipping the service around it.
+       Send me what you're working on.</p>
+    <div class="contact-links">
+      <a class="btn solid" href="mailto:ali9o@uwindsor.ca">ali9o@uwindsor.ca</a>
+      <a class="btn" href="https://github.com/SalmaRoshdy-YG" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn" href="https://scholar.google.ca/citations?user=eEISqbYAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
+      <a class="btn" href="https://www.linkedin.com/in/salma-aly-92bb09174" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" href="Salma_Aly_CV.pdf" target="_blank" rel="noopener">Download CV ↗</a>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <footer>
+      <span>Salma Aly · Windsor, Ontario</span>
+      <span>Built and hosted on GitHub Pages</span>
+    </footer>
+  </div>
+</section>
+
+<script>
+/* capability switcher */
+(function () {
+  var tabs  = Array.prototype.slice.call(document.querySelectorAll('.tabs [role="tab"]'));
+  var panes = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+
+  function select(i) {
+    tabs.forEach(function (t, n) {
+      t.setAttribute('aria-selected', n === i ? 'true' : 'false');
+      panes[n].setAttribute('data-open', n === i ? 'true' : 'false');
+    });
+  }
+
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { select(i); });
+    t.addEventListener('keydown', function (e) {
+      var next = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : null;
+      if (next === null) return;
+      e.preventDefault();
+      next = (next + tabs.length) % tabs.length;
+      select(next);
+      tabs[next].focus();
+    });
+  });
+})();
+
+/* scroll reveal */
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.rv');
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function (el) { el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  items.forEach(function (el) { io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
