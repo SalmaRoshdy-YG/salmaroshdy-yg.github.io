@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Salma Aly — AI/ML engineer & researcher</title>
+<title>Salma Aly — AI/ML engineer &amp; researcher</title>
 <meta name="description" content="Salma Aly builds machine learning systems end to end — LLM fine-tuning and evaluation, reinforcement learning agents, and production ML that runs at scale.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,16 +15,17 @@
    TOKENS
    ───────────────────────────────────────────── */
 :root{
-  --ground:      #5A686F;
-  --recess:      #4B575E;
-  --raise:       #667479;
-  --ink:         #F4F6F5;
-  --ink-mid:     #D2DADA;
-  --ink-soft:    #B3BFC1;
-  --rule:        rgba(244,246,245,.16);
-  --rule-strong: rgba(244,246,245,.32);
-  --brass:       #E9B04A;
-  --mint:        #86D9C0;
+  --ground:      #242E63;
+  --recess:      #1C2450;
+  --raise:       #313C7C;
+  --ink:         #F3F4FF;
+  --ink-mid:     #C7CCF2;
+  --ink-soft:    #A3AADE;
+  --rule:        rgba(199,204,242,.18);
+  --rule-strong: rgba(199,204,242,.36);
+  --amber:       #FFC24B;
+  --aqua:        #5FE3D0;
+  --coral:       #FF8E72;
 
   --display: "Archivo", system-ui, sans-serif;
   --body:    "Newsreader", Georgia, serif;
@@ -44,14 +45,22 @@ body{
   background:var(--ground);
   color:var(--ink);
   font-family:var(--body);
-  font-size:clamp(16.5px, 1.05vw, 18px);
+  font-size:clamp(17px, 1.05vw, 18.5px);
   line-height:1.62;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
+/* ambient warmth so the indigo never reads flat */
+body::after{
+  content:"";
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(1100px 620px at 88% -8%, rgba(255,194,75,.16), transparent 62%),
+    radial-gradient(900px 560px at 4% 6%, rgba(95,227,208,.13), transparent 60%);
+}
 body::before{
   content:"";
-  position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.05;
+  position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.045;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -65,34 +74,34 @@ h1,h2,h3,h4{
 }
 .mono{ font-family:var(--mono); }
 .eyebrow{
-  font-family:var(--mono); font-size:.7rem; font-weight:500;
-  letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft);
+  font-family:var(--mono); font-size:.8rem; font-weight:500;
+  letter-spacing:.15em; text-transform:uppercase; color:var(--ink-soft);
 }
-:focus-visible{ outline:2px solid var(--brass); outline-offset:3px; border-radius:2px; }
+:focus-visible{ outline:2px solid var(--amber); outline-offset:3px; border-radius:2px; }
 
 /* ─────────────────────────────────────────────
    NAV
    ───────────────────────────────────────────── */
 .nav{
   position:sticky; top:0; z-index:50;
-  background:rgba(90,104,111,.82);
+  background:rgba(36,46,99,.86);
   backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
   border-bottom:1px solid var(--rule);
 }
-.nav-in{ display:flex; align-items:center; justify-content:space-between; gap:24px; height:60px; }
+.nav-in{ display:flex; align-items:center; justify-content:space-between; gap:24px; height:64px; }
 .nav-name{
   font-family:var(--display); font-variation-settings:"wdth" 110;
-  font-weight:700; font-size:.95rem; text-decoration:none; white-space:nowrap;
+  font-weight:700; font-size:1.02rem; text-decoration:none; white-space:nowrap;
 }
-.nav-name span{ color:var(--brass); }
+.nav-name span{ color:var(--amber); }
 .nav-links{ display:flex; gap:22px; }
 .nav-links a{
-  font-family:var(--mono); font-size:.72rem; letter-spacing:.09em; text-transform:uppercase;
+  font-family:var(--mono); font-size:.8rem; letter-spacing:.08em; text-transform:uppercase;
   color:var(--ink-mid); text-decoration:none; padding-bottom:2px;
   border-bottom:1px solid transparent; transition:color .2s, border-color .2s;
 }
-.nav-links a:hover{ color:var(--ink); border-color:var(--brass); }
-@media (max-width:920px){ .nav-links{ display:none; } }
+.nav-links a:hover{ color:var(--ink); border-color:var(--amber); }
+@media (max-width:980px){ .nav-links{ display:none; } }
 
 /* ─────────────────────────────────────────────
    HERO
@@ -106,8 +115,8 @@ h1,h2,h3,h4{
 
 .hero-role{ display:flex; align-items:center; gap:12px; margin-bottom:26px; }
 .hero-role .dot{
-  width:7px; height:7px; border-radius:50%; background:var(--mint); flex:none;
-  box-shadow:0 0 0 4px rgba(134,217,192,.18);
+  width:8px; height:8px; border-radius:50%; background:var(--aqua); flex:none;
+  box-shadow:0 0 0 4px rgba(95,227,208,.2);
 }
 h1{
   font-size:clamp(2.4rem, 6vw, 4.3rem);
@@ -115,9 +124,9 @@ h1{
 }
 h1 em{
   font-family:var(--body); font-style:italic; font-weight:400;
-  color:var(--brass); letter-spacing:-.005em;
+  color:var(--amber); letter-spacing:-.005em;
 }
-.hero-lede{ margin:28px 0 0; font-size:1.16rem; color:var(--ink-mid); max-width:48ch; }
+.hero-lede{ margin:28px 0 0; font-size:1.2rem; color:var(--ink-mid); max-width:48ch; }
 .hero-lede strong{ color:var(--ink); font-weight:600; }
 
 .hero-meta{
@@ -125,52 +134,52 @@ h1 em{
   display:flex; flex-wrap:wrap; gap:10px 26px; align-items:center;
 }
 .hero-meta a, .hero-meta span{
-  font-family:var(--mono); font-size:.78rem; color:var(--ink-mid); text-decoration:none;
+  font-family:var(--mono); font-size:.84rem; color:var(--ink-mid); text-decoration:none;
 }
 .hero-meta a{ border-bottom:1px solid var(--rule-strong); padding-bottom:2px; transition:color .2s, border-color .2s; }
-.hero-meta a:hover{ color:var(--brass); border-color:var(--brass); }
+.hero-meta a:hover{ color:var(--amber); border-color:var(--amber); }
 
 /* ── signature: the capability switcher ── */
 .panel{
   background:var(--recess); border:1px solid var(--rule); border-radius:4px;
-  box-shadow:0 22px 48px -28px rgba(20,28,32,.75);
+  box-shadow:0 24px 52px -28px rgba(10,14,38,.85);
   overflow:hidden; font-family:var(--mono);
 }
 .panel-bar{
   display:flex; align-items:center; justify-content:space-between; gap:12px;
-  padding:11px 16px; border-bottom:1px solid var(--rule); background:rgba(0,0,0,.09);
+  padding:12px 16px; border-bottom:1px solid var(--rule); background:rgba(0,0,0,.14);
 }
-.panel-bar .t{ letter-spacing:.11em; text-transform:uppercase; font-size:.66rem; color:var(--ink-soft); }
-.panel-bar .s{ font-size:.66rem; color:var(--mint); letter-spacing:.08em; }
+.panel-bar .t{ letter-spacing:.11em; text-transform:uppercase; font-size:.76rem; color:var(--ink-soft); }
+.panel-bar .s{ font-size:.76rem; color:var(--aqua); letter-spacing:.06em; }
 
 .tabs{ display:flex; border-bottom:1px solid var(--rule); overflow-x:auto; scrollbar-width:none; }
 .tabs::-webkit-scrollbar{ display:none; }
 .tabs button{
   appearance:none; background:none; cursor:pointer; white-space:nowrap;
-  font-family:var(--mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;
+  font-family:var(--mono); font-size:.78rem; letter-spacing:.06em; text-transform:uppercase;
   color:var(--ink-soft); padding:13px 15px; border:none;
   border-bottom:2px solid transparent; transition:color .2s, border-color .2s;
 }
 .tabs button:hover{ color:var(--ink); }
-.tabs button[aria-selected="true"]{ color:var(--ink); border-bottom-color:var(--brass); }
+.tabs button[aria-selected="true"]{ color:var(--ink); border-bottom-color:var(--amber); }
 
 .pane{ padding:20px 16px 18px; display:none; }
 .pane[data-open="true"]{ display:block; animation:fade .3s ease; }
 @keyframes fade{ from{ opacity:0; transform:translateY(5px); } to{ opacity:1; transform:none; } }
 .pane .line{
-  font-family:var(--body); font-size:.98rem; line-height:1.55;
+  font-family:var(--body); font-size:1.04rem; line-height:1.55;
   color:var(--ink-mid); margin:0 0 16px;
 }
 .prow{
   display:flex; align-items:baseline; justify-content:space-between; gap:16px;
-  padding:9px 0; border-top:1px dotted var(--rule); font-size:.73rem;
+  padding:10px 0; border-top:1px dotted var(--rule); font-size:.82rem;
 }
-.prow .k{ color:var(--ink-soft); letter-spacing:.04em; flex:none; }
-.prow .v{ color:var(--mint); text-align:right; }
-.prow .v.b{ color:var(--brass); }
+.prow .k{ color:var(--ink-soft); letter-spacing:.03em; flex:none; }
+.prow .v{ color:var(--aqua); text-align:right; }
+.prow .v.b{ color:var(--amber); }
 .panel-foot{
-  padding:10px 16px; border-top:1px solid var(--rule); background:rgba(0,0,0,.09);
-  font-size:.66rem; color:var(--ink-soft); letter-spacing:.04em;
+  padding:11px 16px; border-top:1px solid var(--rule); background:rgba(0,0,0,.14);
+  font-size:.75rem; color:var(--ink-soft); letter-spacing:.03em;
 }
 
 /* ─────────────────────────────────────────────
@@ -179,10 +188,10 @@ h1 em{
 section{ padding-block:clamp(48px, 7vw, 86px); position:relative; z-index:1; }
 .band{ background:var(--recess); border-block:1px solid var(--rule); }
 .sec-head{ display:flex; align-items:center; gap:16px; margin-bottom:clamp(28px, 4vw, 44px); }
-.sec-head h2{ font-size:clamp(1.35rem, 2.4vw, 1.9rem); font-variation-settings:"wdth" 110; white-space:nowrap; }
-.sec-head .n{ font-family:var(--mono); font-size:.72rem; color:var(--brass); letter-spacing:.1em; }
+.sec-head h2{ font-size:clamp(1.45rem, 2.4vw, 2rem); font-variation-settings:"wdth" 110; white-space:nowrap; }
+.sec-head .n{ font-family:var(--mono); font-size:.82rem; color:var(--coral); letter-spacing:.1em; }
 .sec-head .line{ flex:1; height:1px; background:var(--rule); }
-@media (max-width:560px){ .sec-head .eyebrow{ display:none; } }
+@media (max-width:620px){ .sec-head .eyebrow{ display:none; } }
 
 /* ─────────────────────────────────────────────
    AREAS
@@ -190,9 +199,9 @@ section{ padding-block:clamp(48px, 7vw, 86px); position:relative; z-index:1; }
 .areas{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(18px,2.6vw,32px); }
 @media (max-width:960px){ .areas{ grid-template-columns:repeat(2,1fr); } }
 @media (max-width:560px){ .areas{ grid-template-columns:1fr; } }
-.areas > div{ border-top:2px solid var(--brass); padding-top:16px; }
-.areas h3{ font-size:1.02rem; margin-bottom:8px; font-variation-settings:"wdth" 106; }
-.areas p{ margin:0; color:var(--ink-mid); font-size:.95rem; }
+.areas > div{ border-top:2px solid var(--amber); padding-top:16px; }
+.areas h3{ font-size:1.1rem; margin-bottom:8px; font-variation-settings:"wdth" 106; }
+.areas p{ margin:0; color:var(--ink-mid); font-size:1rem; }
 
 /* ─────────────────────────────────────────────
    PROJECTS
@@ -204,80 +213,92 @@ section{ padding-block:clamp(48px, 7vw, 86px); position:relative; z-index:1; }
   padding:26px 24px 22px; display:flex; flex-direction:column;
   transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
-.card:hover{ transform:translateY(-3px); border-color:var(--rule-strong); box-shadow:0 20px 40px -26px rgba(20,28,32,.7); }
+.card:hover{ transform:translateY(-3px); border-color:var(--rule-strong); box-shadow:0 22px 44px -26px rgba(10,14,38,.8); }
 .card-top{ display:flex; align-items:baseline; justify-content:space-between; gap:14px; margin-bottom:12px; }
-.card h3{ font-size:1.2rem; font-variation-settings:"wdth" 108; }
+.card h3{ font-size:1.26rem; font-variation-settings:"wdth" 108; }
 .card .kind{
-  font-family:var(--mono); font-size:.62rem; letter-spacing:.13em; text-transform:uppercase;
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.11em; text-transform:uppercase;
   color:var(--ink-soft); white-space:nowrap;
 }
-.card p{ margin:0 0 18px; color:var(--ink-mid); font-size:.95rem; }
+.card p{ margin:0 0 18px; color:var(--ink-mid); font-size:1rem; }
 .metrics{ margin-top:auto; border-top:1px solid var(--rule); }
 .metric{
   display:flex; align-items:baseline; justify-content:space-between; gap:14px;
-  padding:8px 0; border-bottom:1px dotted var(--rule);
-  font-family:var(--mono); font-size:.72rem;
+  padding:9px 0; border-bottom:1px dotted var(--rule);
+  font-family:var(--mono); font-size:.8rem;
 }
 .metric:last-child{ border-bottom:none; }
-.metric .k{ color:var(--ink-soft); letter-spacing:.04em; flex:none; }
-.metric .val{ color:var(--mint); font-weight:500; text-align:right; }
-.metric .val.b{ color:var(--brass); }
+.metric .k{ color:var(--ink-soft); letter-spacing:.03em; flex:none; }
+.metric .val{ color:var(--aqua); font-weight:500; text-align:right; }
+.metric .val.b{ color:var(--amber); }
 .card-links{ display:flex; flex-wrap:wrap; gap:16px; margin-top:16px; }
 .card-links a{
-  font-family:var(--mono); font-size:.71rem; letter-spacing:.05em; text-decoration:none;
-  color:var(--ink); border-bottom:1px solid var(--brass); padding-bottom:2px; transition:color .2s;
+  font-family:var(--mono); font-size:.8rem; letter-spacing:.04em; text-decoration:none;
+  color:var(--ink); border-bottom:1px solid var(--amber); padding-bottom:2px; transition:color .2s;
 }
-.card-links a:hover{ color:var(--brass); }
+.card-links a:hover{ color:var(--amber); }
 
 /* ─────────────────────────────────────────────
    PUBLICATIONS
    ───────────────────────────────────────────── */
 .pub{
-  display:grid; grid-template-columns:128px 1fr; gap:clamp(16px,3vw,34px);
-  padding:22px 0; border-top:1px solid var(--rule);
+  display:grid; grid-template-columns:132px 1fr; gap:clamp(16px,3vw,34px);
+  padding:24px 0; border-top:1px solid var(--rule);
 }
 .pub:last-child{ border-bottom:1px solid var(--rule); }
 @media (max-width:720px){ .pub{ grid-template-columns:1fr; gap:10px; } }
-.pub-venue{ font-family:var(--mono); font-size:.74rem; line-height:1.5; }
-.pub-venue .v{ display:block; color:var(--ink); font-weight:500; letter-spacing:.04em; }
+.pub-venue{ font-family:var(--mono); font-size:.82rem; line-height:1.5; }
+.pub-venue .v{ display:block; color:var(--ink); font-weight:500; letter-spacing:.03em; }
 .pub-venue .y{ display:block; color:var(--ink-soft); }
-.pub h3{ font-size:1.06rem; font-variation-settings:"wdth" 104; line-height:1.3; }
-.pub p{ margin:7px 0 0; color:var(--ink-mid); font-size:.94rem; }
-.pub-foot{ margin-top:11px; display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; }
+.pub h3{ font-size:1.14rem; font-variation-settings:"wdth" 104; line-height:1.3; }
+.pub p{ margin:8px 0 0; color:var(--ink-mid); font-size:1rem; }
+.pub-foot{ margin-top:13px; display:flex; flex-wrap:wrap; gap:9px 18px; align-items:center; }
 .status{
-  font-family:var(--mono); font-size:.63rem; letter-spacing:.12em; text-transform:uppercase;
-  padding:3px 9px; border-radius:2px; border:1px solid var(--rule-strong); color:var(--ink-soft);
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.11em; text-transform:uppercase;
+  padding:4px 10px; border-radius:2px; border:1px solid var(--rule-strong); color:var(--ink-soft);
 }
-.status.live{ color:var(--mint); border-color:rgba(134,217,192,.45); }
-.status.review{ color:var(--brass); border-color:rgba(233,176,74,.45); }
-.byline{ font-family:var(--mono); font-size:.7rem; color:var(--ink-soft); }
+.status.live{ color:var(--aqua); border-color:rgba(95,227,208,.5); }
+.status.review{ color:var(--amber); border-color:rgba(255,194,75,.5); }
+.byline{ font-family:var(--mono); font-size:.78rem; color:var(--ink-soft); }
 .pub-foot a{
-  font-family:var(--mono); font-size:.71rem; color:var(--ink-mid); text-decoration:none;
+  font-family:var(--mono); font-size:.8rem; color:var(--ink-mid); text-decoration:none;
   border-bottom:1px solid var(--rule-strong); padding-bottom:1px; transition:color .2s, border-color .2s;
 }
-.pub-foot a:hover{ color:var(--brass); border-color:var(--brass); }
+.pub-foot a:hover{ color:var(--amber); border-color:var(--amber); }
+
+/* headline result strip on the newest paper */
+.pub-stats{
+  display:flex; flex-wrap:wrap; gap:14px 30px;
+  margin-top:15px; padding-top:14px; border-top:1px dotted var(--rule);
+}
+.pub-stats div{ font-family:var(--mono); }
+.pub-stats .k{
+  display:block; font-size:.71rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft);
+}
+.pub-stats .v{ display:block; font-size:.9rem; color:var(--aqua); margin-top:3px; }
+.pub-stats .v.b{ color:var(--amber); }
 
 /* ─────────────────────────────────────────────
    READING LIST
    ───────────────────────────────────────────── */
-.reads-note{ color:var(--ink-mid); max-width:56ch; margin:-14px 0 26px; font-size:.99rem; }
+.reads-note{ color:var(--ink-mid); max-width:56ch; margin:-14px 0 26px; font-size:1.04rem; }
 .read{
-  display:grid; grid-template-columns:112px 1fr; gap:clamp(14px,3vw,32px);
-  padding:18px 0; border-top:1px solid var(--rule);
+  display:grid; grid-template-columns:116px 1fr; gap:clamp(14px,3vw,32px);
+  padding:20px 0; border-top:1px solid var(--rule);
 }
 .read:last-child{ border-bottom:1px solid var(--rule); }
 @media (max-width:720px){ .read{ grid-template-columns:1fr; gap:8px; } }
-.read-src{ font-family:var(--mono); font-size:.72rem; line-height:1.5; }
-.read-src .v{ display:block; color:var(--ink); font-weight:500; letter-spacing:.04em; }
+.read-src{ font-family:var(--mono); font-size:.8rem; line-height:1.5; }
+.read-src .v{ display:block; color:var(--ink); font-weight:500; letter-spacing:.03em; }
 .read-src .y{ display:block; color:var(--ink-soft); }
-.read h3{ font-size:1.02rem; font-variation-settings:"wdth" 104; line-height:1.32; }
+.read h3{ font-size:1.08rem; font-variation-settings:"wdth" 104; line-height:1.32; }
 .read h3 a{
   text-decoration:none; border-bottom:1px solid var(--rule-strong);
   padding-bottom:2px; transition:color .2s, border-color .2s;
 }
-.read h3 a:hover{ color:var(--brass); border-color:var(--brass); }
-.read p{ margin:7px 0 0; color:var(--ink-mid); font-size:.93rem; }
-.read .who{ font-family:var(--mono); font-size:.69rem; color:var(--ink-soft); display:block; margin-top:7px; }
+.read h3 a:hover{ color:var(--amber); border-color:var(--amber); }
+.read p{ margin:8px 0 0; color:var(--ink-mid); font-size:.99rem; }
+.read .who{ font-family:var(--mono); font-size:.77rem; color:var(--ink-soft); display:block; margin-top:8px; }
 
 /* ─────────────────────────────────────────────
    TIMELINE
@@ -288,38 +309,38 @@ section{ padding-block:clamp(48px, 7vw, 86px); position:relative; z-index:1; }
 .job:last-child{ padding-bottom:0; }
 .job::before{
   content:""; position:absolute; left:-25px; top:9px; width:11px; height:11px;
-  border-radius:50%; background:var(--ground); border:2px solid var(--ink-soft);
+  border-radius:50%; background:var(--recess); border:2px solid var(--ink-soft);
 }
-.job.now::before{ border-color:var(--mint); background:var(--mint); box-shadow:0 0 0 4px rgba(134,217,192,.18); }
+.job.now::before{ border-color:var(--aqua); background:var(--aqua); box-shadow:0 0 0 4px rgba(95,227,208,.2); }
 .job-head{ display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:6px 20px; }
-.job h3{ font-size:1.08rem; font-variation-settings:"wdth" 106; }
-.job .org{ color:var(--brass); font-weight:400; font-family:var(--body); font-style:italic; }
-.job .when{ font-family:var(--mono); font-size:.71rem; color:var(--ink-soft); white-space:nowrap; }
-.job ul{ margin:11px 0 0; padding-left:17px; }
-.job li{ margin-bottom:6px; color:var(--ink-mid); font-size:.96rem; }
-.job li::marker{ color:var(--ink-soft); }
+.job h3{ font-size:1.14rem; font-variation-settings:"wdth" 106; }
+.job .org{ color:var(--amber); font-weight:400; font-family:var(--body); font-style:italic; }
+.job .when{ font-family:var(--mono); font-size:.79rem; color:var(--ink-soft); white-space:nowrap; }
+.job ul{ margin:12px 0 0; padding-left:17px; }
+.job li{ margin-bottom:7px; color:var(--ink-mid); font-size:1rem; }
+.job li::marker{ color:var(--amber); }
 
 /* ─────────────────────────────────────────────
    SKILLS + EDUCATION
    ───────────────────────────────────────────── */
 .two{ display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:clamp(28px,5vw,60px); }
 @media (max-width:860px){ .two{ grid-template-columns:1fr; } }
-.skillset{ margin-bottom:24px; }
+.skillset{ margin-bottom:26px; }
 .skillset:last-child{ margin-bottom:0; }
 .skillset h4{
-  font-family:var(--mono); font-size:.67rem; font-weight:500; letter-spacing:.15em;
-  text-transform:uppercase; color:var(--brass); margin-bottom:10px;
+  font-family:var(--mono); font-size:.76rem; font-weight:500; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--amber); margin-bottom:11px;
 }
-.tags{ display:flex; flex-wrap:wrap; gap:7px; }
+.tags{ display:flex; flex-wrap:wrap; gap:8px; }
 .tags span{
-  font-family:var(--mono); font-size:.73rem; padding:5px 11px; border-radius:2px;
-  background:rgba(0,0,0,.13); border:1px solid var(--rule); color:var(--ink-mid);
+  font-family:var(--mono); font-size:.82rem; padding:6px 12px; border-radius:2px;
+  background:rgba(0,0,0,.16); border:1px solid var(--rule); color:var(--ink-mid);
 }
-.edu{ padding:15px 0; border-top:1px solid var(--rule); }
+.edu{ padding:16px 0; border-top:1px solid var(--rule); }
 .edu:last-of-type{ border-bottom:1px solid var(--rule); }
-.edu h4{ font-family:var(--display); font-variation-settings:"wdth" 106; font-size:.99rem; font-weight:600; margin:0 0 3px; }
-.edu .school{ color:var(--ink-mid); font-size:.94rem; }
-.edu .when{ font-family:var(--mono); font-size:.7rem; color:var(--ink-soft); display:block; margin-top:4px; }
+.edu h4{ font-family:var(--display); font-variation-settings:"wdth" 106; font-size:1.05rem; font-weight:600; margin:0 0 3px; }
+.edu .school{ color:var(--ink-mid); font-size:1rem; }
+.edu .when{ font-family:var(--mono); font-size:.78rem; color:var(--ink-soft); display:block; margin-top:5px; }
 
 /* ─────────────────────────────────────────────
    CONTACT
@@ -328,21 +349,21 @@ section{ padding-block:clamp(48px, 7vw, 86px); position:relative; z-index:1; }
   font-size:clamp(1.9rem, 4.4vw, 3rem); font-variation-settings:"wdth" 112;
   font-weight:700; letter-spacing:-.025em; max-width:22ch;
 }
-.contact p{ color:var(--ink-mid); max-width:54ch; margin:20px 0 30px; }
+.contact p{ color:var(--ink-mid); max-width:54ch; margin:20px 0 30px; font-size:1.06rem; }
 .contact-links{ display:flex; flex-wrap:wrap; gap:12px; }
 .btn{
-  font-family:var(--mono); font-size:.78rem; letter-spacing:.05em; text-decoration:none;
-  padding:12px 20px; border-radius:3px; border:1px solid var(--rule-strong); color:var(--ink);
+  font-family:var(--mono); font-size:.84rem; letter-spacing:.04em; text-decoration:none;
+  padding:13px 21px; border-radius:3px; border:1px solid var(--rule-strong); color:var(--ink);
   transition:background .2s, color .2s, border-color .2s;
 }
-.btn:hover{ border-color:var(--brass); color:var(--brass); }
-.btn.solid{ background:var(--brass); color:#3A3021; border-color:var(--brass); font-weight:500; }
-.btn.solid:hover{ background:#F3C067; color:#3A3021; border-color:#F3C067; }
+.btn:hover{ border-color:var(--amber); color:var(--amber); }
+.btn.solid{ background:var(--amber); color:#2E2205; border-color:var(--amber); font-weight:500; }
+.btn.solid:hover{ background:#FFD37A; color:#2E2205; border-color:#FFD37A; }
 
 footer{
-  border-top:1px solid var(--rule); padding-block:26px;
+  border-top:1px solid var(--rule); padding-block:28px;
   display:flex; flex-wrap:wrap; gap:10px 24px; justify-content:space-between;
-  font-family:var(--mono); font-size:.7rem; color:var(--ink-soft);
+  font-family:var(--mono); font-size:.78rem; color:var(--ink-soft);
 }
 
 /* ─────────────────────────────────────────────
@@ -495,6 +516,25 @@ footer{
 
       <article class="card">
         <div class="card-top">
+          <h3>Grounded Judge Gate</h3>
+          <span class="kind">Evaluation · label-free</span>
+        </div>
+        <p>A multi-agent code judge can produce claims, verify them, and report no errors while having
+           no basis for its verdict at all. Two measurements read straight from the pipeline's own
+           logs — no ground truth needed — catch that case, and a gate withholds those comparisons
+           instead of guessing.</p>
+        <div class="metrics">
+          <div class="metric"><span class="k">gated_accuracy</span><span class="val">20.7% → 36.9%</span></div>
+          <div class="metric"><span class="k">coverage_kept</span><span class="val">50.6% of comparisons</span></div>
+          <div class="metric"><span class="k">gain</span><span class="val b">positive in all 27 cells</span></div>
+        </div>
+        <div class="card-links">
+          <span class="status review">WiML @ NeurIPS 2026 · under review</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
           <h3>Parcel Verification at Scale</h3>
           <span class="kind">Production LLM</span>
         </div>
@@ -589,7 +629,7 @@ footer{
   <div class="wrap">
     <div class="sec-head rv">
       <span class="n">03</span><h2>Research</h2><span class="line"></span>
-      <span class="eyebrow">05 papers</span>
+      <span class="eyebrow">06 papers</span>
     </div>
 
     <div class="rv">
@@ -597,11 +637,38 @@ footer{
         <div class="pub-venue"><span class="v">TMLR</span><span class="y">In preparation</span></div>
         <div>
           <h3>When Is a Multi-Agent Code Judge Actually Grounded? Identifying What Its Evidence Must Satisfy, and How to Measure It</h3>
-          <p>Sets out the conditions a multi-agent judge's evidence has to meet before its verdict
-             counts as grounded — and proposes measures for checking whether it does.</p>
+          <p>Extended journal version of the WiML abstract below. Sets out the conditions a multi-agent
+             judge's evidence has to meet before its verdict counts as grounded — independence from the
+             answer under review, and difference between the candidates being compared — and proposes
+             measures for checking whether it does.</p>
           <div class="pub-foot">
             <span class="status">In preparation</span>
-            <span class="byline">Aly, S. R., Kobti, Z.</span>
+            <span class="byline">Aly, S. R., Assaf, H., Kobti, Z.</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="pub-venue"><span class="v">WiML @ NeurIPS</span><span class="y">2026 · under review</span></div>
+        <div>
+          <h3>When Is a Multi-Agent Code Judge Actually Grounded? Two Label-Free Measurements, and a Judge That Declines to Guess</h3>
+          <p>Ran a published multi-agent verification pipeline unmodified on two code-judging
+             benchmarks, across 799 paired comparisons and two Qwen3 judges. It parses, verifies, and
+             reports no errors — while calling the two solutions equally good on most comparisons and
+             landing far below the same model asked directly. Two quantities computed from the
+             pipeline's own logs explain it, with no ground truth involved: how often the proposer
+             asks identical questions of both solutions, and how readily the checker agrees. Gating on
+             the first, before the checker runs at all, lets the pipeline answer only where it has
+             something to go on.</p>
+          <div class="pub-stats">
+            <div><span class="k">Accuracy after gating</span><span class="v b">20.7% → 36.9%</span></div>
+            <div><span class="k">Comparisons still answered</span><span class="v">50.6%</span></div>
+            <div><span class="k">Identical question sets</span><span class="v">76.6%</span></div>
+            <div><span class="k">Benchmarks</span><span class="v">CodeJudgeBench · HumanEvalFix</span></div>
+          </div>
+          <div class="pub-foot">
+            <span class="status review">Under review</span>
+            <span class="byline">Aly, S. R., Assaf, H., Kobti, Z.</span>
           </div>
         </div>
       </article>
@@ -614,7 +681,7 @@ footer{
              fraction of the cost of LLM-as-judge pipelines.</p>
           <div class="pub-foot">
             <span class="status review">Under review</span>
-            <span class="byline">Aly, S. R., Kobti, Z.</span>
+            <span class="byline">Aly, S. R., Assaf, H., Kobti, Z.</span>
           </div>
         </div>
       </article>
@@ -680,7 +747,8 @@ footer{
           <h3><a href="https://aclanthology.org/2026.acl-long.1828/" target="_blank" rel="noopener">MARCH: Multi-Agent Reinforced Check for Hallucination ↗</a></h3>
           <p>Splits hallucination checking across a Solver, a Proposer, and a Checker, then withholds the
              original answer from the Checker so it can't rubber-stamp its own reasoning. Deliberate
-             information asymmetry as a fix for confirmation bias in LLM judges.</p>
+             information asymmetry as a fix for confirmation bias in LLM judges — and the framework my
+             WiML submission runs unmodified on code.</p>
           <span class="who">Li et al.</span>
         </div>
       </article>
@@ -748,6 +816,7 @@ footer{
         <ul>
           <li>Built a deterministic evaluation framework for LLM code responses using LSTM and GNN embeddings with transformer architectures.</li>
           <li>Introduced the Alignment Score, a new metric that classifies generated code via data labels.</li>
+          <li>Developed two label-free measurements that detect when a multi-agent code judge has no basis for its verdict, and a gate that lifts pipeline accuracy from 20.7% to 36.9% while still answering half of all comparisons.</li>
           <li>Designed PARL, an LLM-based multi-agent RL tool for automated API fault discovery — 29% more faults and 128% more diverse requests than baseline.</li>
           <li>Designed and validated Thoth on real health-monitoring setups: 2.5s fault detection, sub-second recovery, under 1% energy overhead.</li>
         </ul>
