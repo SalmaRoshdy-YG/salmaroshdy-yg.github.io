@@ -231,7 +231,7 @@ section{ padding-block:clamp(48px, 7vw, 86px); position:relative; z-index:1; }
 .metric .k{ color:var(--ink-soft); letter-spacing:.03em; flex:none; }
 .metric .val{ color:var(--aqua); font-weight:500; text-align:right; }
 .metric .val.b{ color:var(--amber); }
-.card-links{ display:flex; flex-wrap:wrap; gap:16px; margin-top:16px; }
+.card-links{ display:flex; flex-wrap:wrap; gap:16px; margin-top:16px; align-items:center; }
 .card-links a{
   font-family:var(--mono); font-size:.8rem; letter-spacing:.04em; text-decoration:none;
   color:var(--ink); border-bottom:1px solid var(--amber); padding-bottom:2px; transition:color .2s;
@@ -482,7 +482,7 @@ footer{
     <div class="areas rv">
       <div>
         <h3>Research to product</h3>
-        <p>I've done both sides — publishing at ICSE and TOSEM, and shipping a fine-tuned LLM into a
+        <p>I've done both sides — publishing at TOSEM and NeurIPS, and shipping a fine-tuned LLM into a
            live logistics pipeline. Neither is a detour from the other.</p>
       </div>
       <div>
@@ -529,7 +529,8 @@ footer{
           <div class="metric"><span class="k">gain</span><span class="val b">positive in all 27 cells</span></div>
         </div>
         <div class="card-links">
-          <span class="status review">WiML @ NeurIPS 2026 · under review</span>
+          <a href="https://arxiv.org/abs/2609.30328" target="_blank" rel="noopener">Paper ↗</a>
+          <span class="status live">WiML @ NeurIPS 2026 · accepted</span>
         </div>
       </article>
 
@@ -579,10 +580,6 @@ footer{
           <div class="metric"><span class="k">approach</span><span class="val">reference-free, no execution</span></div>
           <div class="metric"><span class="k">models</span><span class="val">LSTM · GNN · Transformers</span></div>
           <div class="metric"><span class="k">contribution</span><span class="val b">Alignment Score metric</span></div>
-          <div class="metric"><span class="k">venue</span><span class="val">ICSE 2027 · under review</span></div>
-        </div>
-        <div class="card-links">
-          <span class="status review">Code released after review</span>
         </div>
       </article>
 
@@ -632,15 +629,25 @@ footer{
       <span class="eyebrow">06 papers</span>
     </div>
 
-    <div class="rv">
+
       <article class="pub">
-        <div class="pub-venue"><span class="v">TMLR</span><span class="y">In preparation</span></div>
+        <div class="pub-venue"><span class="v">ICPC</span><span class="y">2027 · ERA track</span></div>
         <div>
-          <h3>When Is a Multi-Agent Code Judge Actually Grounded? Identifying What Its Evidence Must Satisfy, and How to Measure It</h3>
-          <p>Extended journal version of the WiML abstract below. Sets out the conditions a multi-agent
-             judge's evidence has to meet before its verdict counts as grounded — independence from the
-             answer under review, and difference between the candidates being compared — and proposes
-             measures for checking whether it does.</p>
+          <h3>TopDown: A Feedback-Driven Multi-Agent Method for Strengthening LLM Code Judges</h3>
+          <p>A feedback-driven multi-agent method for making LLM code judges more reliable.</p>
+          <div class="pub-foot">
+            <span class="status review">Under review</span>
+            <span class="byline">Aly, S. R., Assaf, H., Kobti, Z.</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="pub-venue"><span class="v">ICPC</span><span class="y">2027 · RENE track</span></div>
+        <div>
+          <h3>Do Execution Traces Help Predict the Correctness of LLM-Generated Code? A Negative Result</h3>
+          <p>Asks whether execution traces improve correctness prediction for LLM-generated code, and
+             reports a negative result.</p>
           <div class="pub-foot">
             <span class="status">In preparation</span>
             <span class="byline">Aly, S. R., Assaf, H., Kobti, Z.</span>
@@ -649,7 +656,7 @@ footer{
       </article>
 
       <article class="pub">
-        <div class="pub-venue"><span class="v">WiML @ NeurIPS</span><span class="y">2026</span></div>
+        <div class="pub-venue"><span class="v">WiML @ NeurIPS</span><span class="y">2026 · accepted</span></div>
         <div>
           <h3>When Is a Multi-Agent Code Judge Actually Grounded? Two Label-Free Measurements, and a Judge That Declines to Guess</h3>
           <p>Ran a published multi-agent verification pipeline unmodified on two code-judging
@@ -667,22 +674,9 @@ footer{
             <div><span class="k">Benchmarks</span><span class="v">CodeJudgeBench · HumanEvalFix</span></div>
           </div>
           <div class="pub-foot">
-            <span class="status live">Published</span>
+            <span class="status live">Accepted</span>
             <span class="byline">Aly, S. R., Assaf, H., Kobti, Z.</span>
-             <a href="https://doi.org/10.48550/arXiv.2609.30328" target="_blank" rel="noopener">Paper ↗</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="pub">
-        <div class="pub-venue"><span class="v">ICSE</span><span class="y">2027</span></div>
-        <div>
-          <h3>ICT-Eval: Cost-Effective Reference-Free Correctness Prediction for LLM-Generated Code</h3>
-          <p>Predicts whether generated code is correct without reference tests or execution, at a
-             fraction of the cost of LLM-as-judge pipelines.</p>
-          <div class="pub-foot">
-            <span class="status review">Under review</span>
-            <span class="byline">Aly, S. R., Assaf, H., Kobti, Z.</span>
+            <a href="https://arxiv.org/abs/2609.30328" target="_blank" rel="noopener">Paper ↗</a>
           </div>
         </div>
       </article>
@@ -694,7 +688,7 @@ footer{
           <p>Maps what the field's evaluation infrastructure actually measures, where benchmarks
              disagree, and which correctness claims the metrics can support.</p>
           <div class="pub-foot">
-            <span class="status review">Under review</span>
+            <span class="status review">Under revision</span>
             <a href="https://doi.org/10.5281/zenodo.20618538" target="_blank" rel="noopener">Paper &amp; replication package ↗</a>
           </div>
         </div>
@@ -745,11 +739,25 @@ footer{
       <article class="read">
         <div class="read-src"><span class="v">ACL</span><span class="y">2026</span></div>
         <div>
+          <h3><a href="https://arxiv.org/abs/2601.04171" target="_blank" rel="noopener">Agentic Rubrics as Contextual Verifiers for SWE Agents ↗</a></h3>
+          <p>An expert agent first explores the repository, then writes a grounded rubric checklist;
+             candidate patches are scored against it without running a single test. Under best-of-K
+             selection on SWE-Bench Verified it beats both patch classifiers and agentic test
+             generation, and the rubric scores track ground-truth tests while still flagging issues
+             the tests never cover. Execution-free verification that earns its grounding from context
+             rather than from labels.</p>
+          <span class="who">Raghavendra, Gunjal, Liu, He</span>
+        </div>
+      </article>
+
+      <article class="read">
+        <div class="read-src"><span class="v">ACL</span><span class="y">2026</span></div>
+        <div>
           <h3><a href="https://aclanthology.org/2026.acl-long.1828/" target="_blank" rel="noopener">MARCH: Multi-Agent Reinforced Check for Hallucination ↗</a></h3>
           <p>Splits hallucination checking across a Solver, a Proposer, and a Checker, then withholds the
              original answer from the Checker so it can't rubber-stamp its own reasoning. Deliberate
              information asymmetry as a fix for confirmation bias in LLM judges — and the framework my
-             WiML submission runs unmodified on code.</p>
+             WiML paper runs unmodified on code.</p>
           <span class="who">Li et al.</span>
         </div>
       </article>
